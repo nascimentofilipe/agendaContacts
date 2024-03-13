@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agenda de Contatos</title>
+<style>
+    /* Estilos para a tabela */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    /* Estilos para o formulário */
+    #contact-form {
+        margin-bottom: 20px;
+    }
+    #contact-form input[type="text"] {
+        padding: 8px;
+        margin-right: 10px;
+    }
+    #contact-form input[type="submit"] {
+        padding: 8px 16px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<h2>Agenda de Contatos</h2>
+
+<form id="contact-form">
+    <input type="text" id="name" placeholder="Nome" required>
+    <input type="text" id="phone" placeholder="Telefone" required>
+    <input type="submit" value="Cadastrar">
+</form>
+
+<table id="contact-table">
+    <tr>
+        <th>Nome</th>
+        <th>Telefone</th>
+    </tr>
+</table>
+
+<script>
+    // Função para adicionar um contato à tabela
+    function addContact() {
+        var name = document.getElementById("name").value;
+        var phone = document.getElementById("phone").value;
+
+        var table = document.getElementById("contact-table");
+        var row = table.insertRow(-1);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        cell1.innerHTML = name;
+        cell2.innerHTML = phone;
+
+        // Limpa os campos do formulário após o cadastro
+        document.getElementById("name").value = "";
+        document.getElementById("phone").value = "";
+    }
+
+    // Adiciona um listener para o evento de submit do formulário
+    document.getElementById("contact-form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Previne o comportamento padrão do formulário
+        addContact(); // Chama a função para adicionar o contato
+    });
+</script>
+
+</body>
+</html>
